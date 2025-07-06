@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -13,6 +12,7 @@ import Lifestyle from "./pages/gallery/Lifestyle";
 import Boudoir from "./pages/gallery/Boudoir";
 import VjencanjaiEventi from "./pages/gallery/VjencanjaiEventi";
 import NotFound from "./pages/NotFound";
+import Cookies from "./pages/Cookies";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +27,7 @@ const App = () => (
           <Route path="/usluge" element={<Usluge />} />
           <Route path="/kontakt" element={<Kontakt />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/cookies" element={<Cookies />} />
           <Route path="/galerija/portreti" element={<Portreti />} />
           <Route path="/galerija/lifestyle" element={<Lifestyle />} />
           <Route path="/galerija/boudoir" element={<Boudoir />} />

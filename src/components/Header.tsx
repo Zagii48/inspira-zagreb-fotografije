@@ -1,14 +1,28 @@
-
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileGalleryOpen, setIsMobileGalleryOpen] = useState(false);
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
+  const isGalleryActive = location.pathname.includes('/galerija');
+
+  const galleryLinks = [
+    { title: 'Portreti', path: '/galerija/portreti' },
+    { title: 'Lifestyle', path: '/galerija/lifestyle' },
+    { title: 'Boudoir', path: '/galerija/boudoir' },
+    { title: 'Vjenčanja i eventi', path: '/galerija/vjencanja-eventi' }
+  ];
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b border-[#2c2c2c]">
@@ -30,14 +44,33 @@ const Header = () => {
               Početna
             </Link>
             
-            <Link
-              to="/galerija/portreti"
-              className={`text-sm font-medium transition-colors hover:text-accent ${
-                location.pathname.includes('/galerija') ? 'text-accent' : 'text-white'
-              }`}
-            >
-              Galerija
-            </Link>
+            {/* Galerija Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  className={`text-sm font-medium transition-colors hover:text-accent flex items-center space-x-1 ${
+                    isGalleryActive ? 'text-accent' : 'text-white'
+                  }`}
+                >
+                  <span>Galerija</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="bg-surface border-[#2c2c2c] min-w-[200px]">
+                {galleryLinks.map((link) => (
+                  <DropdownMenuItem key={link.path} asChild>
+                    <Link
+                      to={link.path}
+                      className="w-full text-white hover:text-accent focus:text-accent cursor-pointer"
+                    >
+                      {link.title}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
 
             <Link
               to="/usluge"
@@ -88,13 +121,38 @@ const Header = () => {
                   Početna
                 </Link>
                 
-                <Link
-                  to="/galerija/portreti"
-                  className="text-lg font-medium text-white hover:text-accent transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Galerija
-                </Link>
+                {/* Mobile Galerija Expandable */}
+                <div>
+                  <button
+                    onClick={() => setIsMobileGalleryOpen(!isMobileGalleryOpen)}
+                    className="flex items-center justify-between w-full text-lg font-medium text-white hover:text-accent transition-colors"
+                  >
+                    <span>Galerija</span>
+                    <svg 
+                      className={`w-4 h-4 transition-transform ${isMobileGalleryOpen ? 'rotate-180' : ''}`}
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  
+                  {isMobileGalleryOpen && (
+                    <div className="ml-4 mt-2 space-y-2">
+                      {galleryLinks.map((link) => (
+                        <Link
+                          key={link.path}
+                          to={link.path}
+                          className="block text-base text-subtext hover:text-accent transition-colors py-1"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {link.title}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
 
                 <Link
                   to="/usluge"

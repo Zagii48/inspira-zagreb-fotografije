@@ -1,12 +1,15 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import GalleryModal from '@/components/GalleryModal';
 
 const Boudoir = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
   const portfolioImages = [
     {
       src: 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=500&fit=crop',
@@ -70,6 +73,15 @@ const Boudoir = () => {
     }
   ];
 
+  const openModal = (index: number) => {
+    setSelectedImageIndex(index);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -127,7 +139,7 @@ const Boudoir = () => {
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
-            className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-2"
+            className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -137,8 +149,9 @@ const Boudoir = () => {
               <motion.div 
                 key={index}
                 variants={itemVariants}
-                className="break-inside-avoid mb-2 group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                className="break-inside-avoid mb-6 group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
                 whileHover={{ scale: 1.02 }}
+                onClick={() => openModal(index)}
               >
                 <img
                   src={image.src}
@@ -268,6 +281,14 @@ const Boudoir = () => {
       </motion.section>
 
       <Footer />
+
+      {/* Gallery Modal */}
+      <GalleryModal
+        images={portfolioImages}
+        isOpen={modalOpen}
+        initialIndex={selectedImageIndex}
+        onClose={closeModal}
+      />
     </div>
   );
 };

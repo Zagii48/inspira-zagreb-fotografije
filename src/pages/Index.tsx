@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -6,9 +5,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
+import CookieConsent from '@/components/CookieConsent';
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [hasConsent, setHasConsent] = useState(false);
 
   const portfolioImages = [
     {
@@ -102,6 +104,12 @@ const Index = () => {
     <div className="min-h-screen bg-background font-inter">
       <Header />
       
+      {/* Google Analytics */}
+      <GoogleAnalytics 
+        measurementId="GA_MEASUREMENT_ID" 
+        hasConsent={hasConsent} 
+      />
+      
       {/* Hero sekcija - Full screen with background */}
       <section className="relative min-h-screen flex items-center justify-center">
         <div 
@@ -125,7 +133,7 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Inspira – Profesionalne fotografske usluge
+              Inspira - Profesionalne fotografske usluge
             </motion.h1>
             <motion.p 
               className="text-xl text-white/90 mb-8 max-w-2xl mx-auto"
@@ -150,10 +158,9 @@ const Index = () => {
                 <Link to="/galerija/portreti">Pogledaj galeriju</Link>
               </Button>
               <Button 
-                variant="outline" 
                 size="lg" 
                 asChild
-                className="bg-transparent text-white border-accent hover:bg-accent hover:text-white transition-all duration-300 hover:scale-105"
+                className="bg-transparent text-white border border-accent hover:bg-accent hover:text-white transition-all duration-300 hover:scale-105"
               >
                 <Link to="/kontakt">Zatraži termin</Link>
               </Button>
@@ -342,6 +349,9 @@ const Index = () => {
       </motion.section>
 
       <Footer />
+
+      {/* Cookie Consent Banner */}
+      <CookieConsent onConsentChange={setHasConsent} />
     </div>
   );
 };

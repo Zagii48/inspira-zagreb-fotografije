@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -40,30 +39,30 @@ const CookieConsent = ({ onConsentChange }: CookieConsentProps) => {
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
-          className="fixed bottom-0 left-0 right-0 z-50 p-4"
+          className="fixed bottom-6 right-6 z-50 p-0 w-full max-w-xs md:max-w-sm"
         >
           <Card className="bg-surface border-[#2c2c2c] shadow-2xl">
-            <CardContent className="p-6">
-              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <CardContent className="p-4">
+              <div className="flex flex-col gap-3">
                 <div className="flex-1">
-                  <p className="text-white mb-2">
+                  <p className="text-white mb-2 text-sm">
                     Koristimo kolačiće za analizu prometa i unapređenje korisničkog iskustva na našoj web stranici.
                   </p>
-                  <p className="text-subtext text-sm">
+                  <p className="text-subtext text-xs">
                     Vaša privatnost je važna za nas. Možete odabrati koje kolačiće želite prihvatiti.
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-2 min-w-fit">
                   <Button
                     onClick={handleAccept}
-                    className="bg-accent hover:bg-accentHover text-white"
+                    className="bg-accent hover:bg-accentHover text-white text-sm px-4 py-2"
                   >
                     Prihvati
                   </Button>
                   <Button
                     onClick={handleReject}
                     variant="outline"
-                    className="border-accent text-accent hover:bg-accent hover:text-white"
+                    className="border-accent text-accent hover:bg-accent hover:text-white text-sm px-4 py-2"
                   >
                     Odbij
                   </Button>

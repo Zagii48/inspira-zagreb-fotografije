@@ -9,7 +9,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo i opis */}
           <div className="col-span-1 md:col-span-2">
-            <div className="text-2xl font-bold text-accent mb-4">Inspira</div>
+            <Link to="/" className="flex items-center space-x-2">
+              <img src="/logo.png" alt="Inspira logo" className="h-12 w-auto -ml-2" />
+              <div className="text-2xl font-bold text-accent">Inspira</div>
+            </Link>
             <p className="text-subtext mb-4">
               Profesionalne fotografske usluge u Zagrebu. Specijalizirani za portrete, boudoir, vjenčanja i lifestyle fotografiju.
             </p>

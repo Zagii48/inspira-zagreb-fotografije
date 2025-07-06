@@ -30,6 +30,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
+            <img src="/logo.png" alt="Inspira logo" className="h-12 w-auto -ml-2" />
             <div className="text-2xl font-bold text-accent">Inspira</div>
           </Link>
 
@@ -48,9 +49,9 @@ const Header = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button
-                  className={`text-sm font-medium transition-colors hover:text-accent flex items-center space-x-1 ${
+                  className={`text-sm font-medium transition-colors flex items-center space-x-1 ${
                     isGalleryActive ? 'text-accent' : 'text-white'
-                  }`}
+                  } group`}
                 >
                   <span>Galerija</span>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -63,7 +64,7 @@ const Header = () => {
                   <DropdownMenuItem key={link.path} asChild>
                     <Link
                       to={link.path}
-                      className="w-full text-white hover:text-accent focus:text-accent cursor-pointer"
+                      className="w-full text-white hover:#1f1f1f focus:#1f1f1f cursor-pointer"
                     >
                       {link.title}
                     </Link>

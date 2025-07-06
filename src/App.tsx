@@ -14,6 +14,7 @@ import VjencanjaiEventi from "./pages/gallery/VjencanjaiEventi";
 import NotFound from "./pages/NotFound";
 import Cookies from "./pages/Cookies";
 import ScrollToTop from "@/components/ScrollToTop";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <GoogleAnalytics />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />

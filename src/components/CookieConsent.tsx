@@ -39,7 +39,7 @@ const CookieConsent = ({ onConsentChange }: CookieConsentProps) => {
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
-          className="fixed bottom-6 right-6 z-50 p-0 w-full max-w-xs md:max-w-sm"
+          className="fixed bottom-1 right-1 z-50 p-0 w-full max-w-xs md:max-w-sm"
         >
           <Card className="bg-surface border-[#2c2c2c] shadow-2xl">
             <CardContent className="p-4">

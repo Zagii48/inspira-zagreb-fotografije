@@ -13,6 +13,7 @@ import Boudoir from "./pages/gallery/Boudoir";
 import VjencanjaiEventi from "./pages/gallery/VjencanjaiEventi";
 import NotFound from "./pages/NotFound";
 import Cookies from "./pages/Cookies";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/usluge" element={<Usluge />} />

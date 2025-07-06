@@ -31,6 +31,42 @@ const Lifestyle = () => {
     {
       src: 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=400&fit=crop&crop=entropy',
       alt: 'Spontana lifestyle fotografija Zagreb, kreativne fotografije'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400&h=500&fit=crop&crop=center',
+      alt: 'Lifestyle portret u prirodnom okruženju, Zagreb fotografije'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1500673922987-e212871fec22?w=400&h=600&fit=crop&crop=center',
+      alt: 'Svakodnevni trenutci lifestyle fotografija, Zagreb studio'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=450&fit=crop&crop=faces',
+      alt: 'Intimna lifestyle fotografija kod kuće, lifestyle Zagreb'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=550&fit=crop&crop=faces',
+      alt: 'Moderni lifestyle portret žene, Zagreb fotografski servisi'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400&h=650&fit=crop&crop=top',
+      alt: 'Vanjska lifestyle sesija Zagreb, prirodno fotografiranje'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1500673922987-e212871fec22?w=400&h=500&fit=crop&crop=top',
+      alt: 'Elegantna lifestyle fotografija, profesionalne usluge Zagreb'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=600&fit=crop&crop=top',
+      alt: 'Casual lifestyle fotografija u uredu, business lifestyle Zagreb'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=450&fit=crop&crop=top',
+      alt: 'Relaxed lifestyle fotografiranje, personalizirane fotografije Zagreb'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400&h=400&fit=crop&crop=entropy',
+      alt: 'Lifestyle fotografija s prirodnim svjetlom, Zagreb fotograf'
     }
   ];
 
@@ -91,16 +127,17 @@ const Lifestyle = () => {
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
-            className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6"
+            className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-2"
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true }}
           >
             {portfolioImages.map((image, index) => (
               <motion.div 
                 key={index}
                 variants={itemVariants}
-                className="break-inside-avoid mb-6 group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                className="break-inside-avoid mb-2 group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
                 whileHover={{ scale: 1.02 }}
               >
                 <img

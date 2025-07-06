@@ -10,14 +10,6 @@ const Header = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
-  const handleAnchorClick = (anchor: string) => {
-    setIsMobileMenuOpen(false);
-    const element = document.getElementById(anchor);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b border-[#2c2c2c]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,6 +40,15 @@ const Header = () => {
             </Link>
 
             <Link
+              to="/usluge"
+              className={`text-sm font-medium transition-colors hover:text-accent ${
+                isActive('/usluge') ? 'text-accent' : 'text-white'
+              }`}
+            >
+              Usluge
+            </Link>
+
+            <Link
               to="/faq"
               className={`text-sm font-medium transition-colors hover:text-accent ${
                 isActive('/faq') ? 'text-accent' : 'text-white'
@@ -55,20 +56,15 @@ const Header = () => {
             >
               FAQ
             </Link>
-
-            <button
-              onClick={() => handleAnchorClick('usluge')}
-              className="text-sm font-medium text-white hover:text-accent transition-colors"
-            >
-              Usluge
-            </button>
             
-            <button
-              onClick={() => handleAnchorClick('kontakt')}
-              className="text-sm font-medium text-white hover:text-accent transition-colors"
+            <Link
+              to="/kontakt"
+              className={`text-sm font-medium transition-colors hover:text-accent ${
+                isActive('/kontakt') ? 'text-accent' : 'text-white'
+              }`}
             >
               Kontakt
-            </button>
+            </Link>
           </nav>
 
           {/* Mobile menu */}
@@ -101,26 +97,28 @@ const Header = () => {
                 </Link>
 
                 <Link
+                  to="/usluge"
+                  className="text-lg font-medium text-white hover:text-accent transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Usluge
+                </Link>
+
+                <Link
                   to="/faq"
                   className="text-lg font-medium text-white hover:text-accent transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   FAQ
                 </Link>
-
-                <button
-                  onClick={() => handleAnchorClick('usluge')}
-                  className="text-lg font-medium text-white hover:text-accent transition-colors text-left"
-                >
-                  Usluge
-                </button>
                 
-                <button
-                  onClick={() => handleAnchorClick('kontakt')}
-                  className="text-lg font-medium text-white hover:text-accent transition-colors text-left"
+                <Link
+                  to="/kontakt"
+                  className="text-lg font-medium text-white hover:text-accent transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Kontakt
-                </button>
+                </Link>
               </nav>
             </SheetContent>
           </Sheet>
